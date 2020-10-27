@@ -1,5 +1,5 @@
 <template>
-  <main class="main">
+  <main class="main" :style="{ backgroundColor }">
     <div class="image-container">
       <ImageButton v-for="color of colors" :key="color" :color="color" />
     </div>
@@ -7,10 +7,23 @@
 </template>
 
 <script>
+import observer from "~/observer/observer";
+
 export default {
+  data() {
+    return { backgroundColor: "#fff" };
+  },
   computed: {
     colors() {
       return ["red", "black", "green", "purple", "blue", "orange"];
+    }
+  },
+  created() {
+    observer.register("click", this.changeColor, this);
+  },
+  methods: {
+    changeColor(color) {
+      this.backgroundColor = color;
     }
   }
 };

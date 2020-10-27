@@ -1,13 +1,24 @@
 <template>
-  <div class="image-button" :style="{ backgroundColor: color }"></div>
+  <div
+    class="image-button"
+    :style="{ backgroundColor: color }"
+    v-on:click="onClickImageButton"
+  ></div>
 </template>
 
 <script>
+import observer from "~/observer/observer";
+
 export default {
-  props: ["color"]
+  props: ["color"],
   //   data() {
   //     return { color: "red" };
   //   }
+  methods: {
+    onClickImageButton() {
+      observer.notify("click", this.color);
+    }
+  }
 };
 </script>
 
@@ -15,6 +26,7 @@ export default {
 .image-button {
   flex: 1;
   margin: 4px 4px 4px 0px;
+  cursor: pointer;
 
   &:nth-child(1) {
     margin: 4px 4px 4px 4px;
