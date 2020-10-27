@@ -45,5 +45,6 @@ main {
   max-width: 800px;
   height: 200px;
   border: 4px solid black;
+  background-color: #fff;
 }
 </style>
