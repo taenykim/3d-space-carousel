@@ -1,16 +1,27 @@
 <template>
-  <div class="container">
-    <main class="main">
-      <NuxtChild :key="$route.params.id" />
-      <div
-        class="image-container"
-        ref="imageContainer"
-        :style="{ display: currentColor ? 'none' : 'flex' }"
-      >
-        <ImageButton v-for="color of colors" :key="color" :color="color" />
+  <main class="main">
+    <button class="previous-button" v-on:click="decreaseSelectedIndex">
+      Previous
+    </button>
+    <button class="next-button" v-on:click="increaseSelectedIndex">
+      Next
+    </button>
+    <div
+      class="image-container"
+      ref="imageContainer"
+      :style="{ display: currentColor ? 'none' : 'flex' }"
+    >
+      <div class="carousel">
+        <ImageButton
+          v-for="(color, index) of colors"
+          :key="color"
+          :color="color"
+          :rotateDeg="index * (360 / colors.length)"
+        />
       </div>
-    </main>
-  </div>
+    </div>
+    <NuxtChild :key="$route.params.color" />
+  </main>
 </template>
 
 <script>
@@ -21,13 +32,21 @@ export default {
   props: ["currentColor", "flag"],
   data() {
     return {
-      colors
+      colors,
+      selectedIndex: 0
     };
+  },
+  watch: {
+    selectedIndex() {
+      this.rotateCarousel();
+    }
   },
   created() {
     observer.register("clickImageButton", this.translateImageContainer, this);
   },
-
+  mounted() {
+    // none!
+  },
   methods: {
     translateImageContainer() {
       this.$refs.imageContainer.classList.add("move-down");
@@ -35,6 +54,17 @@ export default {
         this.$refs.imageContainer.style.display = "none";
         clearTimeout(timer);
       }, 1000);
+    },
+    increaseSelectedIndex() {
+      this.selectedIndex++;
+    },
+    decreaseSelectedIndex() {
+      this.selectedIndex--;
+    },
+    rotateCarousel() {
+      const carousel = document.querySelector(".carousel");
+      const angle = (this.selectedIndex / colors.length) * -360;
+      carousel.style.transform = "translateZ(400px) rotateY(" + angle + "deg)";
     }
   }
 };
@@ -51,23 +81,48 @@ main {
   overflow: hidden;
 }
 
-.contents {
-  width: 100%;
-  height: 100%;
+.image-container {
+  margin: 40px 0;
+  width: 210px;
+  height: 140px;
+  margin: 80px auto;
+  perspective: 1000px;
 }
 
-.image-container {
-  display: flex;
-  width: 90%;
-  max-width: 800px;
-  height: 200px;
-  border: 4px solid black;
-  background-color: #fff;
-  position: absolute;
+.carousel {
+  width: 100%;
+  height: 100%;
+  transform: translateZ(400px);
+  transform-style: preserve-3d;
+  transition: transform 1s;
 }
 
 .move-down {
   transform: translateY(900px);
   transition: 1s;
+}
+
+.previous-button {
+  z-index: 100;
+  position: fixed;
+  top: 50%;
+  left: 10px;
+  width: 50px;
+  height: 50px;
+  perspective: 2000px;
+  transform-style: preserve-3d;
+  transform: translateZ(500px);
+}
+
+.next-button {
+  z-index: 100;
+  position: fixed;
+  top: 50%;
+  right: 10px;
+  width: 50px;
+  height: 50px;
+  perspective: 2000px;
+  transform-style: preserve-3d;
+  transform: translateZ(500px);
 }
 </style>

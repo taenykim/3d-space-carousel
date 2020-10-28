@@ -15,4 +15,14 @@ export default {
 };
 </script>
 
-<style></style>
+<style scoped lang="scss">
+@import "~/assets/sass/variables.scss";
+
+.contents {
+  width: 100%;
+  height: calc(100vh - #{$header-height});
+  top: 60px;
+  left: 0;
+  position: absolute;
+}
+</style>

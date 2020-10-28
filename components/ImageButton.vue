@@ -2,7 +2,10 @@
   <nuxt-link :to="`/${color}`">
     <div
       class="image-button"
-      :style="{ backgroundColor: color }"
+      :style="{
+        backgroundColor: color,
+        transform: `rotateY(${rotateDeg}deg) translateZ(288px)`
+      }"
       v-on:click="onClickImageButton"
     ></div>
   </nuxt-link>
@@ -12,7 +15,10 @@
 import observer from "~/observer/observer";
 
 export default {
-  props: ["color"],
+  props: ["color", "rotateDeg"],
+  created() {
+    console.log(this.rotateDeg);
+  },
   methods: {
     onClickImageButton() {
       observer.notify("clickImageButton", {});
@@ -23,13 +29,18 @@ export default {
 
 <style scoped lang="scss">
 a {
-  flex: 1;
-  margin: 4px 4px 4px 0px;
+  position: absolute;
+  width: 190px;
+  height: 120px;
+  left: 10px;
+  top: 10px;
+  line-height: 116px;
+  font-size: 80px;
+  font-weight: bold;
+  color: white;
+  text-align: center;
+  transition: transform 1s, opacity 1s;
   cursor: pointer;
-
-  &:nth-child(1) {
-    margin: 4px 4px 4px 4px;
-  }
 }
 
 .image-button {
