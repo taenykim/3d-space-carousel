@@ -1,5 +1,6 @@
 <template>
   <header>
+    <img class="home" src="~/assets/svg/home.svg" />
     <div class="mini-image-container" ref="miniImageContainer">
       <MiniImageButton v-for="color of colors" :key="color" :color="color" />
     </div>
@@ -7,11 +8,28 @@
 </template>
 
 <script>
+import observer from "~/observer/observer";
+
 export default {
   data() {
     return {
       colors: ["red", "black", "green", "purple", "blue", "orange"]
     };
+  },
+  created() {
+    observer.register("clickImageButton", this.changeView, this);
+  },
+  methods: {
+    changeView(color) {
+      this.changeColor(color);
+      this.translateImageContainer();
+    },
+    changeColor(color) {
+      this.backgroundColor = color;
+    },
+    translateImageContainer() {
+      this.$refs.miniImageContainer.classList.add("move-down");
+    }
   }
 };
 </script>
@@ -21,8 +39,17 @@ export default {
 
 header {
   height: $header-height;
-  background-color: aqua;
+  background-color: #333;
   position: relative;
+}
+
+.home {
+  height: 30px;
+  position: absolute;
+  top: 50%;
+  left: 30px;
+  transform: translateY(-50%);
+  cursor: pointer;
 }
 
 .mini-image-container {
@@ -34,6 +61,11 @@ header {
   position: absolute;
   top: 50%;
   left: 50%;
+  transform: translate(-50%, -100px);
+}
+
+.move-down {
   transform: translate(-50%, -50%);
+  transition: 1s;
 }
 </style>

@@ -34,6 +34,10 @@ export default {
     },
     translateImageContainer() {
       this.$refs.imageContainer.classList.add("move-down");
+      const timer = setTimeout(() => {
+        this.$refs.imageContainer.style.display = "none";
+        clearTimeout(timer);
+      }, 1000);
     }
   }
 };
@@ -47,6 +51,7 @@ main {
   display: flex;
   justify-content: center;
   align-items: center;
+  overflow: hidden;
 }
 
 .image-container {
