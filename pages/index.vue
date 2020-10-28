@@ -1,26 +1,22 @@
 <template>
   <main class="main">
-    <button class="previous-button" v-on:click="decreaseSelectedIndex">
-      Previous
-    </button>
-    <button class="next-button" v-on:click="increaseSelectedIndex">
-      Next
-    </button>
+    <NuxtChild :key="$route.params.color" />
+    <ArrowButtonWrapper />
     <div
       class="image-container"
       ref="imageContainer"
       :style="{ display: currentColor ? 'none' : 'flex' }"
     >
-      <div class="carousel">
+      <div id="big-image-button-wrapper" class="carousel">
         <ImageButton
           v-for="(color, index) of colors"
-          :key="color"
-          :color="color"
-          :rotateDeg="index * (360 / colors.length)"
+          :key="color[`name`]"
+          :color="color[`name`]"
+          :rotateDeg="index * (360 / colors.length) + 360 / colors.length / 2"
+          :src="color[`src`]"
         />
       </div>
     </div>
-    <NuxtChild :key="$route.params.color" />
   </main>
 </template>
 
@@ -43,6 +39,7 @@ export default {
   },
   created() {
     observer.register("clickImageButton", this.translateImageContainer, this);
+    observer.register("changeSelectedIndex", this.changeSelctedIndex, this);
   },
   mounted() {
     // none!
@@ -50,13 +47,15 @@ export default {
   methods: {
     translateImageContainer() {
       this.$refs.imageContainer.classList.add("move-down");
+      observer.notify("removeArrowButton", {});
       const timer = setTimeout(() => {
         this.$refs.imageContainer.style.display = "none";
         clearTimeout(timer);
       }, 1000);
     },
-    increaseSelectedIndex() {
-      this.selectedIndex++;
+    changeSelctedIndex(type) {
+      if (type === "increase") this.selectedIndex++;
+      if (type === "decrease") this.selectedIndex--;
     },
     decreaseSelectedIndex() {
       this.selectedIndex--;
@@ -64,7 +63,7 @@ export default {
     rotateCarousel() {
       const carousel = document.querySelector(".carousel");
       const angle = (this.selectedIndex / colors.length) * -360;
-      carousel.style.transform = "translateZ(400px) rotateY(" + angle + "deg)";
+      carousel.style.transform = "translateZ(900px) rotateY(" + angle + "deg)";
     }
   }
 };
@@ -79,6 +78,9 @@ main {
   justify-content: center;
   align-items: center;
   overflow: hidden;
+  background-image: url("https://images.alphacoders.com/193/thumb-1920-193.jpg");
+  background-position: "center";
+  background-size: cover;
 }
 
 .image-container {
@@ -92,37 +94,13 @@ main {
 .carousel {
   width: 100%;
   height: 100%;
-  transform: translateZ(400px);
+  transform: translateZ(900px);
   transform-style: preserve-3d;
   transition: transform 1s;
 }
 
 .move-down {
-  transform: translateY(900px);
+  opacity: 0;
   transition: 1s;
-}
-
-.previous-button {
-  z-index: 100;
-  position: fixed;
-  top: 50%;
-  left: 10px;
-  width: 50px;
-  height: 50px;
-  perspective: 2000px;
-  transform-style: preserve-3d;
-  transform: translateZ(500px);
-}
-
-.next-button {
-  z-index: 100;
-  position: fixed;
-  top: 50%;
-  right: 10px;
-  width: 50px;
-  height: 50px;
-  perspective: 2000px;
-  transform-style: preserve-3d;
-  transform: translateZ(500px);
 }
 </style>
