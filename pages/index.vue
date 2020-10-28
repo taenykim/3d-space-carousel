@@ -15,12 +15,13 @@
 
 <script>
 import observer from "~/observer/observer";
+import colors from "~/store/colors";
 
 export default {
   props: ["currentColor", "flag"],
   data() {
     return {
-      colors: ["red", "black", "green", "purple", "blue", "orange"],
+      colors,
       moved: false
     };
   },

@@ -3,16 +3,14 @@
 </template>
 
 <script>
+import colors from "~/store/colors";
+
 export default {
   asyncData({ params }) {
     return { currentColor: params.color };
   },
   validate({ params }) {
-    return (
-      ["red", "black", "green", "purple", "blue", "orange"].indexOf(
-        params.color
-      ) >= 0
-    );
+    return colors.indexOf(params.color) >= 0;
   }
 };
 </script>
