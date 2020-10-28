@@ -1,6 +1,6 @@
 <template>
   <main class="main" :style="{ backgroundColor }">
-    <div class="image-container">
+    <div class="image-container" ref="imageContainer">
       <ImageButton v-for="color of colors" :key="color" :color="color" />
     </div>
   </main>
@@ -11,19 +11,29 @@ import observer from "~/observer/observer";
 
 export default {
   data() {
-    return { backgroundColor: "#fff" };
+    return {
+      backgroundColor: "#fff",
+      colors: ["red", "black", "green", "purple", "blue", "orange"]
+    };
   },
-  computed: {
-    colors() {
-      return ["red", "black", "green", "purple", "blue", "orange"];
-    }
-  },
+  // computed: {
+  //   colors() {
+  //     return ["red", "black", "green", "purple", "blue", "orange"];
+  //   }
+  // },
   created() {
-    observer.register("click", this.changeColor, this);
+    observer.register("clickImageButton", this.changeView, this);
   },
   methods: {
+    changeView(color) {
+      this.changeColor(color);
+      this.translateImageContainer();
+    },
     changeColor(color) {
       this.backgroundColor = color;
+    },
+    translateImageContainer() {
+      this.$refs.imageContainer.classList.add("move-down");
     }
   }
 };
@@ -46,5 +56,10 @@ main {
   height: 200px;
   border: 4px solid black;
   background-color: #fff;
+}
+
+.move-down {
+  transform: translateY(900px);
+  transition: 1s;
 }
 </style>

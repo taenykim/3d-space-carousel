@@ -25,11 +25,11 @@ export default {
 <style scoped lang="scss">
 .image-button {
   flex: 1;
-  margin: 4px 4px 4px 0px;
+  margin: 2px 2px 2px 0px;
   cursor: pointer;
 
   &:nth-child(1) {
-    margin: 4px 4px 4px 4px;
+    margin: 2px 2px 2px 2px;
   }
 }
 </style>
