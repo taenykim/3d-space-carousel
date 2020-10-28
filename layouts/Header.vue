@@ -1,6 +1,6 @@
 <template>
   <header>
-    <img class="home" src="~/assets/svg/home.svg" />
+    <a href="/"><img class="home" src="~/assets/svg/home.svg"/></a>
     <div class="mini-image-container" ref="miniImageContainer">
       <MiniImageButton v-for="color of colors" :key="color" :color="color" />
     </div>

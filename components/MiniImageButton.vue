@@ -1,9 +1,11 @@
 <template>
-  <div
-    class="image-button"
-    :style="{ backgroundColor: color }"
-    v-on:click="onClickImageButton"
-  ></div>
+  <nuxt-link :to="`/${color}`">
+    <div
+      class="image-button"
+      :style="{ backgroundColor: color }"
+      v-on:click="onClickImageButton"
+    ></div>
+  </nuxt-link>
 </template>
 
 <script>
@@ -23,7 +25,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.image-button {
+a {
   flex: 1;
   margin: 2px 2px 2px 0px;
   cursor: pointer;
@@ -31,5 +33,9 @@ export default {
   &:nth-child(1) {
     margin: 2px 2px 2px 2px;
   }
+}
+.image-button {
+  width: 100%;
+  height: 100%;
 }
 </style>
