@@ -2,7 +2,11 @@
   <nuxt-link :to="`/${color}`">
     <div
       class="image-button"
-      :style="{ backgroundColor: color }"
+      :style="{
+        backgroundImage: `url(${src})`,
+        backgroundSize: `cover`,
+        backgroundPosition: 'center'
+      }"
       v-on:click="onClickImageButton"
     ></div>
   </nuxt-link>
@@ -12,7 +16,7 @@
 import observer from "~/observer/observer";
 
 export default {
-  props: ["color"],
+  props: ["color", "src"],
   methods: {
     onClickImageButton() {
       observer.notify("clickImageButton", {});

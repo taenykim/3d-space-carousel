@@ -3,7 +3,9 @@
     <div
       class="image-button"
       :style="{
-        backgroundColor: color,
+        backgroundImage: `url(${src})`,
+        backgroundSize: `cover`,
+        backgroundPosition: 'center',
         transform: `rotateY(${rotateDeg}deg) translateZ(288px)`
       }"
       v-on:click="onClickImageButton"
@@ -15,9 +17,9 @@
 import observer from "~/observer/observer";
 
 export default {
-  props: ["color", "rotateDeg"],
+  props: ["color", "rotateDeg", "src"],
   created() {
-    console.log(this.rotateDeg);
+    // observer.register("updateSelectedIndex", this.updateSelectedIndex, this);
   },
   methods: {
     onClickImageButton() {
@@ -29,22 +31,12 @@ export default {
 
 <style scoped lang="scss">
 a {
+}
+.image-button {
   position: absolute;
   width: 190px;
   height: 120px;
-  left: 10px;
-  top: 10px;
-  line-height: 116px;
-  font-size: 80px;
-  font-weight: bold;
-  color: white;
-  text-align: center;
-  transition: transform 1s, opacity 1s;
+  transition: transform 0.5s, opacity 1s;
   cursor: pointer;
-}
-
-.image-button {
-  width: 100%;
-  height: 100%;
 }
 </style>

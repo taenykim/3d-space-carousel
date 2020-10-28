@@ -2,7 +2,12 @@
   <header>
     <a href="/"><img class="home" src="~/assets/svg/home.svg"/></a>
     <div class="mini-image-container" ref="miniImageContainer">
-      <MiniImageButton v-for="color of colors" :key="color" :color="color" />
+      <MiniImageButton
+        v-for="color of colors"
+        :key="color.name"
+        :color="color.name"
+        :src="color.src"
+      />
     </div>
   </header>
 </template>
@@ -36,7 +41,7 @@ export default {
 
 header {
   height: $header-height;
-  background-color: #333;
+  background-color: #000;
   position: relative;
 }
 
@@ -51,7 +56,7 @@ header {
 
 .mini-image-container {
   display: flex;
-  width: 140px;
+  width: 500px;
   height: 40px;
   border: 2px solid black;
   background-color: #fff;

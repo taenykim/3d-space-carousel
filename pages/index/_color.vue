@@ -1,5 +1,12 @@
 <template>
-  <div class="contents" :style="{ backgroundColor: currentColor }"></div>
+  <div
+    class="contents"
+    :style="{
+      backgroundImage: `url(${src})`,
+      backgroundSize: `cover`,
+      backgroundPosition: 'center'
+    }"
+  ></div>
 </template>
 
 <script>
@@ -7,10 +14,12 @@ import colors from "~/store/colors";
 
 export default {
   asyncData({ params }) {
-    return { currentColor: params.color };
+    const src = colors.filter(item => item.name === params.color)[0].src;
+
+    return { src };
   },
   validate({ params }) {
-    return colors.indexOf(params.color) >= 0;
+    return colors.map(item => item.name).indexOf(params.color) >= 0;
   }
 };
 </script>
