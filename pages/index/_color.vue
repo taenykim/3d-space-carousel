@@ -5,8 +5,6 @@
 <script>
 export default {
   asyncData({ params }) {
-    console.log("컬러들어옴", params.color);
-
     return { currentColor: params.color };
   },
   validate({ params }) {

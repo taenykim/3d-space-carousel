@@ -20,44 +20,24 @@ export default {
   props: ["currentColor", "flag"],
   data() {
     return {
-      backgroundColor: this.currentColor ? this.currentColor : "#fff",
       colors: ["red", "black", "green", "purple", "blue", "orange"],
       moved: false
     };
   },
-  // computed: {
-  //   colors() {
-  //     return ["red", "black", "green", "purple", "blue", "orange"];
-  //   }
-  // },
   created() {
     observer.register("clickImageButton", this.changeView, this);
-    console.log("크리에이트됨");
-    console.log(this.currentColor);
-    console.log(this.flag);
   },
-  mounted() {
-    console.log("마운트됨");
-  },
+
   watch: {
     moved() {
-      console.log("watch");
       this.translateImageContainer();
     }
   },
   methods: {
     changeView(color) {
-      console.log(1);
-
-      this.changeColor(color);
       this.moved = true;
     },
-    changeColor(color) {
-      this.backgroundColor = color;
-    },
     translateImageContainer() {
-      console.log("this");
-
       this.$refs.imageContainer.classList.add("move-down");
       const timer = setTimeout(() => {
         this.$refs.imageContainer.style.display = "none";
