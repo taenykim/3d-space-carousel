@@ -15,7 +15,7 @@ export default {
   props: ["color"],
   methods: {
     onClickImageButton() {
-      observer.notify("clickImageButton", this.color);
+      observer.notify("clickImageButton", {});
     }
   }
 };

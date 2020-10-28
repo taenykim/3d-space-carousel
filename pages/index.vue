@@ -21,23 +21,14 @@ export default {
   props: ["currentColor", "flag"],
   data() {
     return {
-      colors,
-      moved: false
+      colors
     };
   },
   created() {
-    observer.register("clickImageButton", this.changeView, this);
+    observer.register("clickImageButton", this.translateImageContainer, this);
   },
 
-  watch: {
-    moved() {
-      this.translateImageContainer();
-    }
-  },
   methods: {
-    changeView(color) {
-      this.moved = true;
-    },
     translateImageContainer() {
       this.$refs.imageContainer.classList.add("move-down");
       const timer = setTimeout(() => {

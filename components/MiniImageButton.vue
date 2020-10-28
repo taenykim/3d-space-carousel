@@ -13,12 +13,9 @@ import observer from "~/observer/observer";
 
 export default {
   props: ["color"],
-  //   data() {
-  //     return { color: "red" };
-  //   }
   methods: {
     onClickImageButton() {
-      observer.notify("clickImageButton", this.color);
+      observer.notify("clickImageButton", {});
     }
   }
 };

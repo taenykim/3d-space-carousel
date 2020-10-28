@@ -9,11 +9,12 @@
 
 <script>
 import observer from "~/observer/observer";
+import colors from "~/store/colors";
 
 export default {
   data() {
     return {
-      colors: ["red", "black", "green", "purple", "blue", "orange"]
+      colors
     };
   },
   created() {
@@ -21,11 +22,7 @@ export default {
   },
   methods: {
     changeView(color) {
-      this.changeColor(color);
       this.translateImageContainer();
-    },
-    changeColor(color) {
-      this.backgroundColor = color;
     },
     translateImageContainer() {
       this.$refs.miniImageContainer.classList.add("move-down");
