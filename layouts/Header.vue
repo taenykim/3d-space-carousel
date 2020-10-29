@@ -14,7 +14,7 @@
       src="~/assets/svg/full.svg"
       @click="toFullDisplay"
     />
-    <a href="/">
+    <a href="https://github.com/taenykim/3d-space-carousel" target="_blank">
       <img class="header-icon github" src="~/assets/svg/github.svg"
     /></a>
     <img

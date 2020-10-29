@@ -1,22 +1,27 @@
 <template>
   <div ref="menuDrawer" id="menu-drawer">
     <div class="close-button" @click="close">X</div>
-    <h3>3D Space Image Viewer</h3>
+    <h3>3D Space Carousel</h3>
     <div class="contents">
-      Contrary to popular belief, Lorem Ipsum is not simply random text. It has
-      roots in a piece of classical Latin literature from 45 BC, making it over
-      2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney
-      College in Virginia, looked up one of the more obscure Latin words,
-      consectetur, from a Lorem Ipsum passage, and going through the cites of
-      the word in classical literature, discovered the undoubtable source. Lorem
-      Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et
-      Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This
-      book is a treatise on the theory of ethics, very popular during the
-      Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit
-      amet..", comes from a line in section 1.10.32.
+      This project was created with a nuxt framework. The source code can be
+      viewed by clicking the GitHub icon at the top. The space image used in the
+      project was referenced at
+      <a href="https://wall.alphacoders.com/" target="_blank" class="ref-link"
+        >https://wall.alphacoders.com/</a
+      >
+      and the svg icon at
+      <a href="https://wall.alphacoders.com/" target="_blank" class="ref-link"
+        >https://www.flaticon.com/</a
+      >.
     </div>
     <div class="contents">
-      @copyright taenykim
+      Thank you for watching.
+    </div>
+    <div class="contents">
+      @author
+      <a href="https://github.com/taenykim" target="_blank" class="me-link">
+        taenykim</a
+      >
     </div>
   </div>
 </template>
@@ -42,6 +47,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.ref-link {
+  color: yellow;
+}
+.me-link {
+  color: rgb(0, 195, 255);
+}
 #menu-drawer {
   position: fixed;
   top: 70px;
