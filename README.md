@@ -2,6 +2,7 @@
 
 ![](https://img.shields.io/badge/-Vue-4FC08D?&logo=Vue.js&logoColor=white)
 ![](https://img.shields.io/badge/-Nuxt-00C58E?&logo=Nuxt.js&logoColor=white)
+![](https://img.shields.io/badge/-Vercel-000000?&logo=Vercel.js&logoColor=white)
 
 🌌 3d space image carousel with nuxt
 
@@ -13,7 +14,7 @@
 
 - 기술스택 : Nuxt, Vue
 - 의도 : Vue 체험 및 공부
-- 배포 사이트 : .
+- 배포 사이트 : https://3d-space-carousel.vercel.app/
 
 ## 📙 배운내용 정리(Vue)
 
