@@ -31,6 +31,7 @@ export default {
 
 <style scoped lang="scss">
 a {
+  filter: grayscale(100%) blur(0.5px);
   flex: 1;
   margin: 2px 2px 2px 0px;
   cursor: pointer;

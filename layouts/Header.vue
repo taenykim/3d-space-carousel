@@ -114,4 +114,7 @@ header {
   transform: translate(-50%, -50%);
   transition: 1s;
 }
+.nuxt-link-active {
+  filter: none !important;
+}
 </style>
