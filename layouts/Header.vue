@@ -9,6 +9,7 @@
         :src="color.src"
       />
     </div>
+    <img class="full" src="~/assets/svg/full.svg" v-on:click="toFullDisplay" />
   </header>
 </template>
 
@@ -31,13 +32,20 @@ export default {
     },
     translateImageContainer() {
       this.$refs.miniImageContainer.classList.add("move-down");
+    },
+    toFullDisplay() {
+      if (!document.fullscreenElement) {
+        document.documentElement.requestFullscreen();
+      } else {
+        document.exitFullscreen();
+      }
     }
   }
 };
 </script>
 
 <style scoped lang="scss">
-@import "~/assets/sass/variables.scss";
+@import "~/assets/scss/variables.scss";
 
 header {
   height: $header-height;
@@ -54,9 +62,18 @@ header {
   cursor: pointer;
 }
 
+.full {
+  height: 30px;
+  position: absolute;
+  top: 50%;
+  right: 30px;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+
 .mini-image-container {
   display: flex;
-  width: 500px;
+  width: 30vw;
   height: 40px;
   border: 2px solid black;
   background-color: #fff;
