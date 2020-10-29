@@ -3,9 +3,9 @@
     <div class="close-button" @click="close">X</div>
     <h3>3D Space Carousel</h3>
     <div class="contents">
-      This project was created with a nuxt framework. The source code can be
-      viewed by clicking the GitHub icon at the top. The space image used in the
-      project was referenced at
+      This project was created with a Vue framework, Nuxt. The source code can
+      be viewed by clicking the GitHub icon at the top. The space image used in
+      the project was referenced at
       <a href="https://wall.alphacoders.com/" target="_blank" class="ref-link"
         >https://wall.alphacoders.com/</a
       >
