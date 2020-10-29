@@ -1,11 +1,30 @@
+const title = "3d space carousel";
+const description = "3d carousel space carousel image viewer";
+
 export default {
   // Global page headers (https://go.nuxtjs.dev/config-head)
   head: {
-    title: "nuxt",
+    title,
     meta: [
       { charset: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { hid: "description", name: "description", content: "" }
+      {
+        hid: "description",
+        name: "description",
+        content: description
+      },
+      {
+        property: "og:title",
+        content: title
+      },
+      {
+        property: "og:description",
+        content: description
+      },
+      {
+        property: "og:image",
+        content: "/preview.png"
+      }
     ],
     link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.svg" }]
   },
