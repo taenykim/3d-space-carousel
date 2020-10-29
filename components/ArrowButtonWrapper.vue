@@ -3,14 +3,14 @@
     <button
       ref="previousButton"
       class="previous-button arrow-button"
-      v-on:click="decreaseSelectedIndex"
+      @click="decreaseSelectedIndex"
     >
       &lt;
     </button>
     <button
       ref="nextButton"
       class="next-button arrow-button"
-      v-on:click="increaseSelectedIndex"
+      @click="increaseSelectedIndex"
     >
       &gt;
     </button>
@@ -43,17 +43,17 @@ export default {
 .arrow-button {
   z-index: 100;
   position: fixed;
-  top: 50%;
-  width: 50px;
-  height: 50px;
+  top: calc(50% - 35px);
+  width: 70px;
+  height: 70px;
   perspective: 2000px;
   transform-style: preserve-3d;
-  transform: translateZ(500px);
   border-radius: 50%;
   background-color: white;
   color: black;
   cursor: pointer;
   border: none;
+  transform-origin: center;
 }
 
 .previous-button {
@@ -65,7 +65,7 @@ export default {
 }
 
 @keyframes dynamic {
-  20% {
+  30% {
     transform: scale(1.2);
   }
   100% {
@@ -74,7 +74,7 @@ export default {
 }
 
 .dynamic-remove {
-  animation: dynamic 0.5s;
+  animation: dynamic 0.7s;
   animation-fill-mode: forwards;
 }
 </style>

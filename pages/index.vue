@@ -70,7 +70,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@import "~/assets/sass/variables.scss";
+@import "~/assets/scss/variables.scss";
 
 main {
   height: calc(100vh - #{$header-height});
@@ -78,9 +78,6 @@ main {
   justify-content: center;
   align-items: center;
   overflow: hidden;
-  background-image: url("https://images.alphacoders.com/193/thumb-1920-193.jpg");
-  background-position: "center";
-  background-size: cover;
 }
 
 .image-container {

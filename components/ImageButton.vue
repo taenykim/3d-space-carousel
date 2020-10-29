@@ -1,14 +1,16 @@
 <template>
   <nuxt-link :to="`/${color}`">
     <div
+      ref="imageButton"
       class="image-button"
       :style="{
+        backgroundColor: `black`,
         backgroundImage: `url(${src})`,
         backgroundSize: `cover`,
         backgroundPosition: 'center',
         transform: `rotateY(${rotateDeg}deg) translateZ(288px)`
       }"
-      v-on:click="onClickImageButton"
+      @click="onClickImageButton"
     ></div>
   </nuxt-link>
 </template>
@@ -18,8 +20,13 @@ import observer from "~/observer/observer";
 
 export default {
   props: ["color", "rotateDeg", "src"],
-  created() {
-    // observer.register("updateSelectedIndex", this.updateSelectedIndex, this);
+  created() {},
+  mounted() {
+    // const bgImg = new Image();
+    // bgImg.onload = () => {
+    //   this.$refs.imageButton.style.backgroundImage = "url(" + bgImg.src + ")";
+    // };
+    // bgImg.src = this.src;
   },
   methods: {
     onClickImageButton() {
@@ -30,13 +37,12 @@ export default {
 </script>
 
 <style scoped lang="scss">
-a {
-}
 .image-button {
   position: absolute;
   width: 190px;
   height: 120px;
   transition: transform 0.5s, opacity 1s;
   cursor: pointer;
+  box-shadow: 0px 0px 5px 2px #dddddd33;
 }
 </style>

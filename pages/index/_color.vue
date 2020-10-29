@@ -2,6 +2,7 @@
   <div
     class="contents"
     :style="{
+      backgroundColor: `black`,
       backgroundImage: `url(${src})`,
       backgroundSize: `cover`,
       backgroundPosition: 'center'
@@ -25,7 +26,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@import "~/assets/sass/variables.scss";
+@import "~/assets/scss/variables.scss";
 
 .contents {
   width: 100%;

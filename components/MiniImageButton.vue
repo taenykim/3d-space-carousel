@@ -3,11 +3,12 @@
     <div
       class="image-button"
       :style="{
+        backgroundColor: `black`,
         backgroundImage: `url(${src})`,
         backgroundSize: `cover`,
         backgroundPosition: 'center'
       }"
-      v-on:click="onClickImageButton"
+      @click="onClickImageButton"
     ></div>
   </nuxt-link>
 </template>
