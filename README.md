@@ -5,14 +5,14 @@
 
 🌌 3d carousel space carousel image viewer
 
-> vue 공부를 위해 만들어본 토이 프로젝트
+> Vue 공부를 위해 만들어본 토이 프로젝트
 
 ## 📝 프로젝트 설명
 
-- 기술스택 : nuxt, vue
-- 의도 : vue 체험 및 공부
+- 기술스택 : Nuxt, Vue
+- 의도 : Vue 체험 및 공부
 
-## 📙 배운내용 정리(vue)
+## 📙 배운내용 정리(Vue)
 
 ### Vue vs React
 
@@ -21,18 +21,18 @@
 
 ### style
 
-- Vue 파일 내부에서 style태그에 scoped 를 적어주면 모듈화가 바로 가능하고, lang="scss"를 적어주면 전처리기도 바로 쓸 수 있어서 상당히 편했다. 물론 sass를 설치해주어야 함
+- Vue 파일 내부에서 style태그에 scoped 를 적어주면 모듈화가 바로 가능하고, lang="scss"를 적어주면 전처리기도 바로 쓸 수 있어서 상당히 편했다. 물론 sass를 설치해주어야 한다!
 
-### nuxt
+### Nuxt
 
 - **pages** : 페이지 서버사이드렌더링과 라우팅을 지원한다. 동적라우팅도 `_` 쓰면 가능하다.
-- **layouts** : 페이지 공통부분을 구성해준다. `<Nuxt/>` 컴포넌트 안으로 page가 들어가는 것 같음.
+- **layouts** : 페이지 공통부분을 구성해준다. `<Nuxt/>` 컴포넌트 안으로 page가 들어가는 것 같다.
 - **components** : 컴포넌트들
-- **assets**, **static** : 에셋은 빌드시 들어가는 정적파일, 스태틱은 그렇지 않은 정적파일을 의미하는 것 같다. [공식문서](https://ko.nuxtjs.org/guide/assets/)에 차이점이 나와있음.
+- **assets**, **static** : 에셋은 빌드시 들어가는 정적파일, 스태틱은 그렇지 않은 정적파일을 의미하는 것 같다. [공식문서](https://ko.nuxtjs.org/guide/assets/)에 차이점이 나와있다.
 
 ### 반복문
 
-- Vue는 이런식으로 반복문을 사용할 수 있었다.
+- Vue는 아래의 방식으로 반복문을 사용할 수 있었다.
 
 ```js
 <Component v-for="imageSrc of imageSrcs"
@@ -42,23 +42,27 @@
 <Component v-for="(imageSrc,index) of imageSrcs"`
 ```
 
-- React에서는
+- React는 아래의 방식으로 반복문을 사용했던 것으로 기억한다.
 
 ```jsx
 {{imageSrcs.map(imageSrc=> <Component>)}}
 ```
 
-- 이런식으로 외부에서 반복을 돌렸다면 Vue는 내부에서 반복을 돌려준다. 리액트가 좀더 JavaScript로 정교하게 컴포넌트를 조작할 수 있는 것 같다.
-
 ### 약어
 
-1. props를 내려주거나 key, style 등을 사용할 수 있다.
+- **props, key, style 등록**
 
-- `v-vind:something="value"` : `:something="value"`
+```js
+<Component v-vind:something="value" />
+<Component :something="value"/>
+```
 
-2. 이벤트핸들러 등록
+- **이벤트핸들러 등록**
 
-- `v-on:eventName="handler"` : `@eventName="handler"`
+```js
+<Component v-on:eventName="handler"/>
+<Component @eventName="handler"/>
+```
 
 ### CSR 라우팅
 
@@ -83,6 +87,33 @@
 
 ## 📚 배운내용 정리(그 외)
 
+### 3d carousel
+
+- **perspective** : z축을 따라 view와 관찰자의 거리(깊이감)을 나타냄 (픽셀 기반)
+- **관찰자 시점 3d로 설정** : `transform-style: preserve-3d;`
+- perspective 를 부모에 설정하느냐 개별 자식에 설정하느냐에 따라서 다른 3d 효과를 줄 수 있음.
+- 3d carousel은 wrapper인 **.image-container**에 perspective를 설정하고, **.carousel**에 3d 속성을 주었다. 그리고 **.carousel > .image-button**에 Y회전값(각도에 따라 일정하게 회전)과 Z회전값(부모 carousel부터의 거리)를 주었다.
+
+```scss
+.image-container {
+  perspective: 1000px;
+}
+
+.carousel {
+  // 이미지들을 크게 보기위함!
+  transform: translateZ(900px);
+  // carousel 자체 회전
+  transform: rotateY(${angle}deg)
+  transform-style: preserve-3d;
+}
+
+.image-button {
+  // rotateY : 이미지 마다의 회전값
+  // rotateZ : 부모인 carousel에서의 거리
+  transform: rotateY(${rotateDeg}deg) translateZ(288px);
+}
+```
+
 ### 스크롤바 커스터마이징
 
 ```css
@@ -106,10 +137,6 @@
   background: white;
 }
 ```
-
-### 3d carousel
-
-### perspective & z-index
 
 ## ⛏️ 삽질한 것
 
