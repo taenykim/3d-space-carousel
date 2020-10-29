@@ -12,12 +12,16 @@
     <img
       class="header-icon full"
       src="~/assets/svg/full.svg"
-      v-on:click="toFullDisplay"
+      @click="toFullDisplay"
     />
     <a href="/">
       <img class="header-icon github" src="~/assets/svg/github.svg"
     /></a>
-    <img class="header-icon menu" src="~/assets/svg/menu.svg" />
+    <img
+      class="header-icon menu"
+      src="~/assets/svg/menu.svg"
+      @click="showMenuDrawer"
+    />
   </header>
 </template>
 
@@ -47,6 +51,9 @@ export default {
       } else {
         document.exitFullscreen();
       }
+    },
+    showMenuDrawer() {
+      observer.notify("showMenuDrawer", {});
     }
   }
 };
