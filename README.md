@@ -1,11 +1,11 @@
 # 3d space carousel
 
+![](https://img.shields.io/badge/-Vue-4FC08D?&logo=Vue.js&logoColor=white)
+![](https://img.shields.io/badge/-Nuxt-00C58E?&logo=Nuxt.js&logoColor=white)
+
 🌌 3d space image carousel with nuxt
 
 > Vue 공부를 위해 만들어본 토이 프로젝트
-
-![](https://img.shields.io/badge/-Vue-4FC08D?&logo=Vue.js&logoColor=white)
-![](https://img.shields.io/badge/-Nuxt-00C58E?&logo=Nuxt.js&logoColor=white)
 
 ![](./images/preview-raw.gif)
 
