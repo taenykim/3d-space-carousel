@@ -7,7 +7,7 @@
       ref="imageContainer"
       :style="{ display: currentUrlName ? 'none' : 'flex' }"
     >
-      <div id="big-image-button-wrapper" class="carousel">
+      <div ref="carousel" id="big-image-button-wrapper" class="carousel">
         <ImageButton
           v-for="(imageSrc, index) of imageSrcs"
           :key="imageSrc[`name`]"
@@ -67,9 +67,9 @@ export default {
       this.selectedIndex--;
     },
     rotateCarousel() {
-      const carousel = document.querySelector(".carousel");
       const angle = (this.selectedIndex / imageSrcs.length) * -360;
-      carousel.style.transform = "translateZ(900px) rotateY(" + angle + "deg)";
+      this.$refs.carousel.style.transform =
+        "translateZ(900px) rotateY(" + angle + "deg)";
     }
   }
 };
