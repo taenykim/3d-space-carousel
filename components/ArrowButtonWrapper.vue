@@ -49,8 +49,6 @@ export default {
   top: calc(50% - 35px);
   width: 70px;
   height: 70px;
-  perspective: 2000px;
-  transform-style: preserve-3d;
   border-radius: 50%;
   background-color: white;
   color: black;

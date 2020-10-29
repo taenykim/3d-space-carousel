@@ -38,7 +38,6 @@ export default {
   position: absolute;
   width: 190px;
   height: 120px;
-  transition: transform 0.5s, opacity 1s;
   cursor: pointer;
   box-shadow: 0px 0px 5px 2px #dddddd33;
 }
