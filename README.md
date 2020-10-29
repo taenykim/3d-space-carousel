@@ -1,16 +1,19 @@
 # 3d space carousel
 
+🌌 3d space image carousel with nuxt
+
+> Vue 공부를 위해 만들어본 토이 프로젝트
+
 ![](https://img.shields.io/badge/-Vue-4FC08D?&logo=Vue.js&logoColor=white)
 ![](https://img.shields.io/badge/-Nuxt-00C58E?&logo=Nuxt.js&logoColor=white)
 
-🌌 3d carousel space carousel image viewer
-
-> Vue 공부를 위해 만들어본 토이 프로젝트
+![](./images/preview-low.gif)
 
 ## 📝 프로젝트 설명
 
 - 기술스택 : Nuxt, Vue
 - 의도 : Vue 체험 및 공부
+- 배포 사이트 : .
 
 ## 📙 배운내용 정리(Vue)
 
@@ -145,6 +148,7 @@
 - 클라이언트 사이드 라우팅을 하면서, 특정 컴포넌트만 리렌더링하고 싶은데, 라우팅이 되면 nuxt의 `page` 가 모두 렌더링 되었다.
 - `<NuxtChild>` 를 써서 해결
 - pages 디렉토리 내부에서 index 디렉토리를 만들고, 동적라우팅될 컴포넌트를 따로 적어주니까 라우팅되어도 child안에 있는 vue만 렌더링 되고 나머지는 그대로 있었다. 어떤 방식인지는 이해했는데 아직 익숙하진 않은 것 같다.
+- 참고한 사이트 : https://ednsquare.com/story/nested-routes-in-nuxt-js-with-example------ayGs0r
 
 ### 이미지 깜빡거림
 
@@ -164,6 +168,7 @@ bgImg.src = this.src;
 
 - https://kr.vuejs.org/v2/guide/index.html
 - https://ko.nuxtjs.org/
+- https://ednsquare.com/story/nested-routes-in-nuxt-js-with-example------ayGs0r
 - https://3dtransforms.desandro.com/carousel?fbclid=IwAR04gTvdmnZjMh_psYCenG7NemOpU66HsYSBBoNmIhVutZJic_Ilf4kYnkk
 - https://wall.alphacoders.com/
 - https://www.flaticon.com/

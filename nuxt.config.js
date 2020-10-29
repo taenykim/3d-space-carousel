@@ -1,5 +1,5 @@
 const title = "3d space carousel";
-const description = "3d carousel space carousel image viewer";
+const description = "3d space image carousel with nuxt";
 
 export default {
   // Global page headers (https://go.nuxtjs.dev/config-head)
