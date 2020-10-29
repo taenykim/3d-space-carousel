@@ -2,7 +2,7 @@
 
 ![](https://img.shields.io/badge/-Vue-4FC08D?&logo=Vue.js&logoColor=white)
 ![](https://img.shields.io/badge/-Nuxt-00C58E?&logo=Nuxt.js&logoColor=white)
-![](https://img.shields.io/badge/-Vercel-000000?&logo=Vercel.js&logoColor=white)
+![](https://img.shields.io/badge/-Vercel-000000?&logo=Vercel&logoColor=white)
 
 🌌 3d space image carousel with nuxt
 
