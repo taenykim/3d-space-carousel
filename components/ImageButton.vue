@@ -24,13 +24,7 @@ const { CLICK_IMAGE_BUTTON } = IMAGE_BUTTON_ACTION;
 export default {
   props: ["urlName", "rotateDeg", "src"],
   created() {},
-  mounted() {
-    // const bgImg = new Image();
-    // bgImg.onload = () => {
-    //   this.$refs.imageButton.style.backgroundImage = "url(" + bgImg.src + ")";
-    // };
-    // bgImg.src = this.src;
-  },
+  mounted() {},
   methods: {
     onClickImageButton() {
       observer.notify(CLICK_IMAGE_BUTTON, {});
