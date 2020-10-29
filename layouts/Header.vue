@@ -1,6 +1,6 @@
 <template>
   <header>
-    <a href="/"><img class="home" src="~/assets/svg/home.svg"/></a>
+    <a href="/"><img class="header-icon home" src="~/assets/svg/home.svg"/></a>
     <div class="mini-image-container" ref="miniImageContainer">
       <MiniImageButton
         v-for="color of colors"
@@ -9,7 +9,15 @@
         :src="color.src"
       />
     </div>
-    <img class="full" src="~/assets/svg/full.svg" v-on:click="toFullDisplay" />
+    <img
+      class="header-icon full"
+      src="~/assets/svg/full.svg"
+      v-on:click="toFullDisplay"
+    />
+    <a href="/">
+      <img class="header-icon github" src="~/assets/svg/github.svg"
+    /></a>
+    <img class="header-icon menu" src="~/assets/svg/menu.svg" />
   </header>
 </template>
 
@@ -53,22 +61,30 @@ header {
   position: relative;
 }
 
-.home {
+.header-icon {
   height: 30px;
   position: absolute;
   top: 50%;
-  left: 30px;
   transform: translateY(-50%);
   cursor: pointer;
 }
 
+.home {
+  left: 30px;
+}
+
 .full {
-  height: 30px;
-  position: absolute;
-  top: 50%;
+  right: 84px;
+}
+
+.github {
+  height: 33px;
+  right: 132px;
+}
+
+.menu {
+  height: 35px;
   right: 30px;
-  transform: translateY(-50%);
-  cursor: pointer;
 }
 
 .mini-image-container {
