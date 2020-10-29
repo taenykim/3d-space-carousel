@@ -19,17 +19,20 @@
 
 <script>
 import observer from "~/observer/observer";
+import { ARROW_BUTTON_ACTION } from "~/observer/actions";
+
+const { CHANGE_SELECTED_INDEX, REMOVE_ARROW_BUTTON } = ARROW_BUTTON_ACTION;
 
 export default {
   created() {
-    observer.register("removeArrowButton", this.removeArrowButton, this);
+    observer.register(REMOVE_ARROW_BUTTON, this.removeArrowButton, this);
   },
   methods: {
     increaseSelectedIndex() {
-      observer.notify("changeSelectedIndex", "increase");
+      observer.notify(CHANGE_SELECTED_INDEX, "increase");
     },
     decreaseSelectedIndex() {
-      observer.notify("changeSelectedIndex", "decrease");
+      observer.notify(CHANGE_SELECTED_INDEX, "decrease");
     },
     removeArrowButton() {
       this.$refs.previousButton.classList.add("dynamic-remove");

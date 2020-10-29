@@ -23,6 +23,10 @@
 <script>
 import observer from "~/observer/observer";
 import colors from "~/store/colors";
+import { ARROW_BUTTON_ACTION, IMAGE_BUTTON_ACTION } from "~/observer/actions";
+
+const { REMOVE_ARROW_BUTTON, CHANGE_SELECTED_INDEX } = ARROW_BUTTON_ACTION;
+const { CLICK_IMAGE_BUTTON } = IMAGE_BUTTON_ACTION;
 
 export default {
   props: ["currentColor", "flag"],
@@ -38,8 +42,8 @@ export default {
     }
   },
   created() {
-    observer.register("clickImageButton", this.translateImageContainer, this);
-    observer.register("changeSelectedIndex", this.changeSelctedIndex, this);
+    observer.register(CLICK_IMAGE_BUTTON, this.translateImageContainer, this);
+    observer.register(CHANGE_SELECTED_INDEX, this.changeSelctedIndex, this);
   },
   mounted() {
     // none!
@@ -47,7 +51,7 @@ export default {
   methods: {
     translateImageContainer() {
       this.$refs.imageContainer.classList.add("move-down");
-      observer.notify("removeArrowButton", {});
+      observer.notify(REMOVE_ARROW_BUTTON, {});
       const timer = setTimeout(() => {
         this.$refs.imageContainer.style.display = "none";
         clearTimeout(timer);

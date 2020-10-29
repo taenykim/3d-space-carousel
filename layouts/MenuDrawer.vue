@@ -23,10 +23,12 @@
 
 <script>
 import observer from "~/observer/observer";
+import { MENU_DRAWER_ACTION } from "~/observer/actions";
 
+const { SHOW_MENU_DRAWER } = MENU_DRAWER_ACTION;
 export default {
   created() {
-    observer.register("showMenuDrawer", this.show, this);
+    observer.register(SHOW_MENU_DRAWER, this.show, this);
   },
   methods: {
     show() {

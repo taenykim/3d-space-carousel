@@ -17,6 +17,9 @@
 
 <script>
 import observer from "~/observer/observer";
+import { IMAGE_BUTTON_ACTION } from "~/observer/actions";
+
+const { CLICK_IMAGE_BUTTON } = IMAGE_BUTTON_ACTION;
 
 export default {
   props: ["color", "rotateDeg", "src"],
@@ -30,7 +33,7 @@ export default {
   },
   methods: {
     onClickImageButton() {
-      observer.notify("clickImageButton", {});
+      observer.notify(CLICK_IMAGE_BUTTON, {});
     }
   }
 };

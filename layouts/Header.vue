@@ -28,6 +28,10 @@
 <script>
 import observer from "~/observer/observer";
 import colors from "~/store/colors";
+import { MENU_DRAWER_ACTION, IMAGE_BUTTON_ACTION } from "~/observer/actions";
+
+const { SHOW_MENU_DRAWER } = MENU_DRAWER_ACTION;
+const { CLICK_IMAGE_BUTTON } = IMAGE_BUTTON_ACTION;
 
 export default {
   data() {
@@ -36,7 +40,7 @@ export default {
     };
   },
   created() {
-    observer.register("clickImageButton", this.changeView, this);
+    observer.register(CLICK_IMAGE_BUTTON, this.changeView, this);
   },
   methods: {
     changeView(color) {
@@ -53,7 +57,7 @@ export default {
       }
     },
     showMenuDrawer() {
-      observer.notify("showMenuDrawer", {});
+      observer.notify(SHOW_MENU_DRAWER, {});
     }
   }
 };
