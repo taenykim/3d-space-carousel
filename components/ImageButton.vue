@@ -1,5 +1,5 @@
 <template>
-  <nuxt-link :to="`/${color}`">
+  <nuxt-link :to="`/${urlName}`">
     <div
       ref="imageButton"
       class="image-button"
@@ -22,7 +22,7 @@ import { IMAGE_BUTTON_ACTION } from "~/observer/actions";
 const { CLICK_IMAGE_BUTTON } = IMAGE_BUTTON_ACTION;
 
 export default {
-  props: ["color", "rotateDeg", "src"],
+  props: ["urlName", "rotateDeg", "src"],
   created() {},
   mounted() {
     // const bgImg = new Image();

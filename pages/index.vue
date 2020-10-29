@@ -1,19 +1,21 @@
 <template>
   <main class="main">
-    <NuxtChild :key="$route.params.color" />
+    <NuxtChild :key="$route.params.urlName" />
     <ArrowButtonWrapper />
     <div
       class="image-container"
       ref="imageContainer"
-      :style="{ display: currentColor ? 'none' : 'flex' }"
+      :style="{ display: currentUrlName ? 'none' : 'flex' }"
     >
       <div id="big-image-button-wrapper" class="carousel">
         <ImageButton
-          v-for="(color, index) of colors"
-          :key="color[`name`]"
-          :color="color[`name`]"
-          :rotateDeg="index * (360 / colors.length) + 360 / colors.length / 2"
-          :src="color[`src`]"
+          v-for="(imageSrc, index) of imageSrcs"
+          :key="imageSrc[`name`]"
+          :urlName="imageSrc[`name`]"
+          :rotateDeg="
+            index * (360 / imageSrcs.length) + 360 / imageSrcs.length / 2
+          "
+          :src="imageSrc[`src`]"
         />
       </div>
     </div>
@@ -22,17 +24,17 @@
 
 <script>
 import observer from "~/observer/observer";
-import colors from "~/store/colors";
+import imageSrcs from "~/store/imageSrcs";
 import { ARROW_BUTTON_ACTION, IMAGE_BUTTON_ACTION } from "~/observer/actions";
 
 const { REMOVE_ARROW_BUTTON, CHANGE_SELECTED_INDEX } = ARROW_BUTTON_ACTION;
 const { CLICK_IMAGE_BUTTON } = IMAGE_BUTTON_ACTION;
 
 export default {
-  props: ["currentColor", "flag"],
+  props: ["currentUrlName", "flag"],
   data() {
     return {
-      colors,
+      imageSrcs,
       selectedIndex: 0
     };
   },
@@ -66,7 +68,7 @@ export default {
     },
     rotateCarousel() {
       const carousel = document.querySelector(".carousel");
-      const angle = (this.selectedIndex / colors.length) * -360;
+      const angle = (this.selectedIndex / imageSrcs.length) * -360;
       carousel.style.transform = "translateZ(900px) rotateY(" + angle + "deg)";
     }
   }

@@ -1,5 +1,5 @@
 <template>
-  <nuxt-link :to="`/${color}`">
+  <nuxt-link :to="`/${urlName}`">
     <div
       class="image-button"
       :style="{
@@ -20,7 +20,7 @@ import { IMAGE_BUTTON_ACTION } from "~/observer/actions";
 const { CLICK_IMAGE_BUTTON } = IMAGE_BUTTON_ACTION;
 
 export default {
-  props: ["color", "src"],
+  props: ["urlName", "src"],
   methods: {
     onClickImageButton() {
       observer.notify(CLICK_IMAGE_BUTTON, {});

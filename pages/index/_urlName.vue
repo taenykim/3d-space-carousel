@@ -11,16 +11,16 @@
 </template>
 
 <script>
-import colors from "~/store/colors";
+import imageSrcs from "~/store/imageSrcs";
 
 export default {
   asyncData({ params }) {
-    const src = colors.filter(item => item.name === params.color)[0].src;
+    const src = imageSrcs.filter(item => item.name === params.urlName)[0].src;
 
     return { src };
   },
   validate({ params }) {
-    return colors.map(item => item.name).indexOf(params.color) >= 0;
+    return imageSrcs.map(item => item.name).indexOf(params.urlName) >= 0;
   }
 };
 </script>

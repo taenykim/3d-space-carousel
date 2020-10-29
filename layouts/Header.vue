@@ -3,10 +3,10 @@
     <a href="/"><img class="header-icon home" src="~/assets/svg/home.svg"/></a>
     <div class="mini-image-container" ref="miniImageContainer">
       <MiniImageButton
-        v-for="color of colors"
-        :key="color.name"
-        :color="color.name"
-        :src="color.src"
+        v-for="imageSrc of imageSrcs"
+        :key="imageSrc.name"
+        :urlName="imageSrc.name"
+        :src="imageSrc.src"
       />
     </div>
     <img
@@ -27,7 +27,7 @@
 
 <script>
 import observer from "~/observer/observer";
-import colors from "~/store/colors";
+import imageSrcs from "~/store/imageSrcs";
 import { MENU_DRAWER_ACTION, IMAGE_BUTTON_ACTION } from "~/observer/actions";
 
 const { SHOW_MENU_DRAWER } = MENU_DRAWER_ACTION;
@@ -36,14 +36,14 @@ const { CLICK_IMAGE_BUTTON } = IMAGE_BUTTON_ACTION;
 export default {
   data() {
     return {
-      colors
+      imageSrcs
     };
   },
   created() {
     observer.register(CLICK_IMAGE_BUTTON, this.changeView, this);
   },
   methods: {
-    changeView(color) {
+    changeView() {
       this.translateImageContainer();
     },
     translateImageContainer() {

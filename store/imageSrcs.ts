@@ -1,4 +1,4 @@
-const colors = [
+const imageSrcs = [
   {
     name: "space1",
     src: "https://images2.alphacoders.com/644/thumb-1920-644457.jpg"
@@ -37,4 +37,4 @@ const colors = [
   }
 ];
 
-export default colors;
+export default imageSrcs;
